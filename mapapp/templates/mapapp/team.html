@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Our Team{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/team.css' %}">
+<link rel="stylesheet" href="{% static 'css/spooky.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center text-warning mb-3">🎃 Meet Team 10</h1>
+<p class="text-center mb-5 page-sub">
+  Building the Trick-or-Treat Route Finder together for Hackathon 2025!
+</p>
+
+<div class="text-center mb-4">
+  <button id="spooky-toggle" class="btn btn-sm btn-warning" type="button">Spooky 🎃</button>
+</div>
+
+{# OPTIONAL spooky overlay here if not already in base.html #}
+
+<div class="spooky-layer">
+  <div class="sprite ghost">
+    <div class="body"><span class="eye left"></span><span class="eye right"></span><span class="mouth"></span></div>
+  </div>
+  <div class="sprite bat bat1"><svg viewBox="0 0 120 48" aria-hidden="true"><path d="M0 28c14-20 36-16 60-8 24-8 46-12 60 8-12-4-24-2-36 6-6-4-16-4-24 0-12-8-24-10-36-6z"/></svg></div>
+  <div class="sprite bat bat2"><svg viewBox="0 0 120 48" aria-hidden="true"><path d="M0 28c14-20 36-16 60-8 24-8 46-12 60 8-12-4-24-2-36 6-6-4-16-4-24 0-12-8-24-10-36-6z"/></svg></div>
+  <div class="sprite bat bat3"><svg viewBox="0 0 120 48" aria-hidden="true"><path d="M0 28c14-20 36-16 60-8 24-8 46-12 60 8-12-4-24-2-36 6-6-4-16-4-24 0-12-8-24-10-36-6z"/></svg></div>
+  <div class="sprite spider"><div class="thread"></div><div class="bug"></div></div>
+</div>
+
+<div class="row g-4 justify-content-center section-pad">
+
+  <!-- David -->
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card team-card text-center border-0">
+      <img src="{% static 'image/david.jpeg' %}" class="avatar" alt="David Cotter">
+      <div class="card-body">
+        <h5 class="card-title">David Cotter</h5>
+        <p class="card-text text-info">Full-Stack Developer</p>
+        <p>Leads the project setup, Django backend, and GitHub coordination.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rachel -->
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card team-card text-center border-0">
+      <img src="{% static 'image/rachel.jpg' %}" class="avatar" alt="Rachel">
+      <div class="card-body">
+        <h5 class="card-title">Rachel</h5>
+        <p class="card-text text-info">Frontend Developer</p>
+        <p>Works on UI design and frontend integration with the map feature.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swathi -->
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card team-card text-center border-0">
+      <img src="{% static 'image/swathi.jpg' %}" class="avatar" alt="Swathi">
+      <div class="card-body">
+        <h5 class="card-title">Swathi</h5>
+        <p class="card-text text-info">Data & AI</p>
+        <p>Brings analytical skills to enhance map logic and feature ideas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daniel -->
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card team-card text-center border-0">
+      <img src="{% static 'image/daniel.jpg' %}" class="avatar" alt="Daniel">
+      <div class="card-body">
+        <h5 class="card-title">Daniel</h5>
+        <p class="card-text text-info">Backend Developer</p>
+        <p>Handles data flow, Django logic, and map integration setup.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Geraldine -->
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card team-card text-center border-0">
+      <img src="{% static 'image/geraldine.jpg' %}" class="avatar" alt="Geraldine">
+      <div class="card-body">
+        <h5 class="card-title">Geraldine</h5>
+        <p class="card-text text-info">HTML & CSS / Wireframes</p>
+        <p>Designs layouts and styles for pages, ensuring a user-friendly look.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
