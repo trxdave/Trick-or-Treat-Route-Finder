@@ -2,18 +2,18 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import House
 
-def home(request):
-    return render(request, 'mapapp/home.html')
+def map_view(request):
+    """Render the main map page. Ensure template mapapp/map.html exists."""
+    return render(request, 'mapapp/map.html')
 
-def team(request):
-    return render(request, "mapapp/team.html")
 
-# Create your views here.
 def houses_json(request):
+    """Return all houses as JSON for the frontend map to consume."""
     qs = House.objects.all().values('id','name','address','status','latitude','longitude')
     return JsonResponse(list(qs), safe=False)
 
 def add_house(request):
+
     if request.method == 'POST':
         name = request.POST.get('name', '').strip()
         address = request.POST.get('address', '').strip()
@@ -21,7 +21,8 @@ def add_house(request):
         lat = request.POST.get('latitude') or None
         lng = request.POST.get('longitude') or None
 
-        house = House.objects.create(
+        House.objects.create(
+
             name=name,
             address=address,
             status=status,
@@ -29,30 +30,11 @@ def add_house(request):
             longitude=lng
         )
 
-        # If JS called it (Ajax), return JSON. Otherwise redirect for normal form.
-        is_ajax = request.headers.get('x-requested-with') == 'XMLHttpRequest' or 'application/json' in request.headers.get('accept', '')
-        if is_ajax:
-            return JsonResponse({
-                'ok': True,
-                'id': house.id,
-                'name': house.name,
-                'address': house.address,
-                'status': house.status,
-                'latitude': str(house.latitude) if house.latitude is not None else None,
-                'longitude': str(house.longitude) if house.longitude is not None else None
-            })
-        return redirect('home')
-    return JsonResponse({'error': 'POST required'}, status=400)
-
-def delete_house(request, pk):
-    if request.method == 'POST':
-        h = get_object_or_404(House, pk=pk)
-        h.delete()
-        return JsonResponse({'ok': True})
-    return JsonResponse({'error': 'POST required'}, status=400)
+    return redirect('map')
 
 def update_house(request, pk):
-    """Update a House via POST (AJAX friendly)."""
+    """Update an existing house via POST (used by the popup edit)."""
+
     if request.method != 'POST':
         return JsonResponse({'error': 'POST required'}, status=400)
     house = get_object_or_404(House, pk=pk)
@@ -61,13 +43,16 @@ def update_house(request, pk):
     house.status = request.POST.get('status', house.status)
     lat = request.POST.get('latitude')
     lng = request.POST.get('longitude')
-    if lat is not None and lat != '':
-        house.latitude = lat
-    if lng is not None and lng != '':
-        house.longitude = lng
+
+    house.latitude = lat or house.latitude
+    house.longitude = lng or house.longitude
     house.save()
     return JsonResponse({'ok': True})
 
-def map_view(request):
-    """Standalone map page (used by urls.py)."""
-    return render(request, 'mapapp/map.html')
+def delete_house(request, pk):
+    """Delete a House by pk. POST only (CSRF protected)."""
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST required'}, status=400)
+    house = get_object_or_404(House, pk=pk)
+    house.delete()
+    return JsonResponse({'ok': True})
