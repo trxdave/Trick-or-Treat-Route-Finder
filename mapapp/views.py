@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import House
-
+import json
 
 def home(request):
     """Render the home page."""
@@ -18,24 +18,56 @@ def houses_json(request):
     return JsonResponse(list(qs), safe=False)
 
 def add_house(request):
+    """Create a house from POST. Accepts FormData or JSON and returns JSON."""
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST required'}, status=405)
 
-    if request.method == 'POST':
-        name = request.POST.get('name', '').strip()
-        address = request.POST.get('address', '').strip()
-        status = request.POST.get('status', 'giving')
-        lat = request.POST.get('latitude') or None
-        lng = request.POST.get('longitude') or None
+    # Accept JSON body or form-encoded (FormData)
+    try:
+        if request.content_type and 'application/json' in request.content_type:
+            payload = json.loads(request.body.decode('utf-8') or '{}')
+            name = payload.get('name', '')[:100]
+            address = payload.get('address', '')[:255]
+            status = payload.get('status', 'none')
+            lat = payload.get('latitude') or payload.get('lat')
+            lng = payload.get('longitude') or payload.get('lng')
+        else:
+            name = request.POST.get('name', '')[:100]
+            address = request.POST.get('address', '')[:255]
+            status = request.POST.get('status', 'none')
+            lat = request.POST.get('latitude') or request.POST.get('lat')
+            lng = request.POST.get('longitude') or request.POST.get('lng')
+    except Exception as e:
+        return JsonResponse({'error': 'Invalid payload', 'detail': str(e)}, status=400)
 
-        House.objects.create(
+    # convert lat/lng to floats when possible
+    try:
+        latitude = float(lat) if lat not in (None, '', 'null') else None
+    except (TypeError, ValueError):
+        latitude = None
+    try:
+        longitude = float(lng) if lng not in (None, '', 'null') else None
+    except (TypeError, ValueError):
+        longitude = None
 
+    try:
+        house = House.objects.create(
             name=name,
             address=address,
             status=status,
-            latitude=lat,
-            longitude=lng
+            latitude=latitude,
+            longitude=longitude
         )
-
-    return redirect('map')
+        return JsonResponse({
+            'id': house.id,
+            'name': house.name,
+            'address': house.address,
+            'status': house.status,
+            'latitude': house.latitude,
+            'longitude': house.longitude,
+        }, status=201)
+    except Exception as e:
+        return JsonResponse({'error': 'Could not create house', 'detail': str(e)}, status=500)
 
 def update_house(request, pk):
     """Update an existing house via POST (used by the popup edit)."""

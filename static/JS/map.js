@@ -16,6 +16,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const DELETE_TEMPLATE = cfg.DELETE_HOUSE_TEMPLATE || '/api/houses/0/delete/';
   const UPDATE_TEMPLATE = cfg.UPDATE_HOUSE_TEMPLATE || '/api/houses/0/update/';
 
+  // small non-blocking UI message helper (uses existing theme colors)
+  function showMapMessage(text, level='info') {
+    const el = document.createElement('div');
+    el.textContent = text;
+    el.style.position = 'fixed';
+    el.style.top = '12px';
+    el.style.right = '12px';
+    el.style.zIndex = 99999;
+    el.style.padding = '8px 12px';
+    el.style.borderRadius = '6px';
+    el.style.fontWeight = '700';
+    el.style.color = '#111';
+    el.style.background = level === 'success' ? 'rgba(255,197,87,0.98)' : (level === 'danger' ? 'rgba(220,60,60,0.95)' : 'rgba(60,60,60,0.95)');
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2600);
+  }
+
   const mapEl = document.getElementById('map');
   if (!mapEl) return console.warn('map element not found');
 
@@ -45,7 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function loadHouses() {
     fetch(HOUSES_URL, { credentials: 'same-origin' })
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error('Failed to load houses: ' + r.status);
+        return r.json();
+      })
       .then(arr => {
         Object.values(markers).forEach(m => map.removeLayer(m));
         for (const k in markers) delete markers[k];
@@ -104,24 +124,47 @@ document.addEventListener('DOMContentLoaded', function () {
         credentials: 'same-origin',
         body: fd
       })
-      .then(r => r.json())
-      .then(js => {
-        if (js && js.ok) {
-          // add marker using returned data (if provided) or reload
-          if (js.id) {
-            addMarker(js);
-          } else {
-            loadHouses();
-          }
-          map.closePopup();
-        } else {
-          alert('Add failed');
-          console.error('Add failed response', js);
+      .then(async r => {
+        if (!r.ok) {
+          const text = await r.text().catch(()=> 'no body');
+          console.error('Add failed', r.status, text);
+          showMapMessage('Save failed', 'danger');
+          return null;
         }
+
+        // If server returns JSON, parse it. If not, accept the 2xx as success
+        const ct = (r.headers.get('content-type') || '').toLowerCase();
+        if (ct.includes('application/json')) {
+          try {
+            return await r.json();
+          } catch (err) {
+            console.warn('Failed to parse JSON response from add:', err);
+            return { ok: true };
+          }
+        } else {
+          // non-json response (HTML/text) — read for logging and treat as success
+          const txt = await r.text().catch(()=> '');
+          console.info('Add returned non-JSON response:', txt);
+          return { ok: true, __raw: txt };
+        }
+      })
+      .then(js => {
+        if (!js) return; // error already handled above
+
+        // if server returned created house object, add marker directly
+        if (js.id || js.latitude || js.longitude) {
+          addMarker(js);
+        } else {
+          // otherwise refresh the list from server to pick up the new house
+          loadHouses();
+        }
+
+        showMapMessage('Saved', 'success');
+        map.closePopup();
       })
       .catch(err => {
         console.error('Add failed', err);
-        alert('Add failed');
+        showMapMessage('Network error while saving', 'danger');
       });
       return;
     }
@@ -135,16 +178,26 @@ document.addEventListener('DOMContentLoaded', function () {
         headers: { 'X-CSRFToken': csrftoken, 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
         credentials: 'same-origin'
       })
-      .then(r => r.json())
+      .then(async r => {
+        if (!r.ok) {
+          const text = await r.text().catch(()=> 'no body');
+          console.error('Delete failed', r.status, text);
+          showMapMessage('Delete failed', 'danger');
+          return null;
+        }
+        return r.json().catch(()=> ({ ok: true }));
+      })
       .then(js => {
+        if (!js) return;
         if (js && js.ok) {
           if (markers[id]) { map.removeLayer(markers[id]); delete markers[id]; }
           map.closePopup();
+          showMapMessage('Deleted', 'success');
         } else {
-          alert('Delete failed');
+          showMapMessage('Delete failed', 'danger');
         }
       })
-      .catch(err => { console.error('Delete error', err); alert('Delete failed'); });
+      .catch(err => { console.error('Delete error', err); showMapMessage('Delete failed', 'danger'); });
     }
   });
 });

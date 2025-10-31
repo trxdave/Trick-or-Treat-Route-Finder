@@ -1,17 +1,8 @@
 {% load static %}
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-
+S
 <div class="map-card">
-  <div class="controls">
-    <input id="search-address" placeholder="Find address">
-    <button id="btn-find" type="button">Find</button>
-    <button id="btn-center" type="button">Center</button>
-    <small id="geocode-msg"></small>
-  </div>
-
   <div id="map" style="height:480px;"></div>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<!-- use the actual static JS path that exists in the workspace -->
 <script src="{% static 'JS/map.js' %}"></script>
