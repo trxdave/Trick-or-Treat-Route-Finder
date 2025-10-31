@@ -38,6 +38,8 @@ body{
 
 main {
     background-color: rgba(11, 11, 13, .4);
+    min-width: 100%;
+    min-height: 100vh;
 }
 
 /* Page title + subtitle */
@@ -83,6 +85,9 @@ footer > a{
   padding: .45rem .8rem;
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(255,154,31,.25);
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 #spooky-toggle:hover{
   filter: brightness(1.08);
@@ -96,3 +101,5 @@ footer > a{
 
 /* optional: hide spooky effects on very small screens */
 @media (max-width:480px){ .spooky-layer, #spooky-toggle {display:none} body {animation: none} }
+
+/* Re-size and space things out on larger screens */
