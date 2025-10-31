@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 3;                 /* above bg, below content if cards have higher z */
+  z-index: 3;
   contain: layout style paint;
 }
 
