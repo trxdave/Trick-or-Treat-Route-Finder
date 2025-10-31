@@ -36,6 +36,10 @@ body{
   font-size: 1.2rem;
 }
 
+main {
+    background-color: rgba(11, 11, 13, .4);
+}
+
 /* Page title + subtitle */
 h1{
   color: var(--orange);

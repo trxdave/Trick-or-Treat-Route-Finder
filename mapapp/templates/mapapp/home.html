@@ -3,18 +3,19 @@
 {% block title %}Home | Trick or Treat{% endblock %}
 
 {% block content %}
-  <h1 class="text-center display-5">Trick or Treat Route Finder!</h1>
-  <p class="text-center">Find the best Trick-or-Treat spots near you</p>
-  <p class="text-center">Or let Trick-or-Treaters know your candy status</p>
-
-  <div class="container">
-    <div class="row text-center row-gap-4">
-      <div class="column col-12 col-lg-6 mt-3">
-        <a href="/" class="btn btn-warning">🍬 Trick or Treater</a>
-      </div>
-      <div class="column col-12 col-lg-6 mt-3">
-        <a href="/" class="btn btn-warning">🏠 Update my Status</a>
+  <section id="home-main">
+    <h1 class="text-center display-5">Trick or Treat Route Finder!</h1>
+    <div class="container">
+     <div class="row text-center row-gap-4">
+        <div class="column col-12 col-lg-6 mt-2">
+          <p class="text-center">Find the best Trick-or-Treat spots near you</p>
+          <a href="/" class="btn btn-warning">🍬 Trick or Treater</a>
+        </div>
+        <div class="column col-12 col-lg-6 mt-2">
+          <p class="text-center">Or let Trick-or-Treaters know your candy status</p>
+          <a href="/" class="btn btn-warning">🏠 Update my Status</a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 {% endblock %}
