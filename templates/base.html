@@ -24,7 +24,7 @@
   {% endblock %}
 </head>
 
-<body class="bg-dark text-light">
+<body class="bg-dark text-light d-flex flex-column min-vh-100">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/"><img id="logo" class="me-3"src="../static/image/web-near-white.png" alt="Spider web logo">Trick-or-Treat</a>
@@ -78,6 +78,11 @@
     {% block content %}{% endblock %}
 
     <button id="spooky-toggle" class="btn btn-sm btn-warning ms-2" type="button">Spooky 🎃</button>
+
+    <!-- Footer -->
+    <footer class="mt-auto fixed-bottom text-end py-3">
+      <a href="../mapapp/templates/mapapp/team.html" class="me-3">Developed by 🎃 Hack Team 10</a>
+    </footer> 
   </main>
 
   <script src="{% static 'js/spooky.js' %}"></script>

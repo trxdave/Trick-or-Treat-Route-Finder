@@ -10,6 +10,7 @@
 .navbar .nav-link:hover{ color: var(--orange) !important; }
 .navbar-brand{ color:#ffffff !important; font-weight:800; }
 #logo{ height:30px; width: 30px; }
+.navbar-toggler{ border: none; }
 
 /* ===== Halloween Theme (Black / White / Pumpkin) ===== */
 :root{
@@ -92,6 +93,19 @@ p.page-sub{
 }
 .card p{
   color: var(--muted);
+}
+
+/* Footer */
+footer{
+  background-color: var(--bg);
+  font-size: .8rem;
+  min-height: 40px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+footer > a{
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Spooky toggle button */
