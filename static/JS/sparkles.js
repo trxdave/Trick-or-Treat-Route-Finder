@@ -7,8 +7,8 @@
   container.id = 'sparkles';
   document.body.appendChild(container);
 
-  const colors = ['#ff9a1f', '#ffb347', '#ffffff', '#63ccca']; // pumpkin, lighter pumpkin, ghost, mint
-  const MAX = 120; // cap nodes for perf
+  const colors = ['#ff9a1f', '#ffb347', '#ffffff', '#63ccca'];
+  const MAX = 120;
   let lastT = 0;
 
   function spawn(x, y) {
