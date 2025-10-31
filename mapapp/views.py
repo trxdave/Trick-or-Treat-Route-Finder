@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import House
 
+
+def home(request):
+    """Render the home page."""
+    return render(request, 'mapapp/home.html')
+
 def map_view(request):
     """Render the main map page. Ensure template mapapp/map.html exists."""
     return render(request, 'mapapp/map.html')

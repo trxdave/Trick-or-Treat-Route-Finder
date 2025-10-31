@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.map_view, name='map'),
+    path('', views.home, name='home'),
     path('api/houses/', views.houses_json, name='houses_json'),
     path('add/', views.add_house, name='add_house'),
     path('api/houses/<int:pk>/delete/', views.delete_house, name='delete_house'),
