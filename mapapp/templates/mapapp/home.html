@@ -1,4 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/team.css' %}">
+<link rel="stylesheet" href="{% static 'css/spooky.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<link rel="stylesheet" href="{% static 'mapapp/css/style.css' %}">
+
+{% endblock %}
 
 {% block title %}Home | Trick or Treat{% endblock %}
 
@@ -18,4 +27,22 @@
       </div>
     </div>
   </section>
+
+  <section id="map" class="my-4">
+    {% include "mapapp/map.html" %}
+  </section>
+
+  
+<script>
+window.ROUTE_CONFIG = {
+  HOUSES_JSON_URL: "{% url 'houses_json' %}",
+  ADD_HOUSE_URL: "{% url 'add_house' %}",
+  DELETE_HOUSE_TEMPLATE: "{% url 'delete_house' 0 %}",
+  UPDATE_HOUSE_TEMPLATE: "{% url 'update_house' 0 %}"
+};
+</script>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="{% static 'mapapp/js/maps.js' %}"></script>
 {% endblock %}
+
