@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<link rel="stylesheet" href="{% static 'mapapp/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <div class="map-card">
+    <div class="map-card-header">
+      <div>
+        <h2>Trick-or-Treat Route Map</h2>
+        <div class="sub">Show which houses are giving out candy tonight</div>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <div class="badge"><span class="dot dot-giving"></span> Giving</div>
+        <div class="badge"><span class="dot dot-out"></span> Out</div>
+        <div class="badge"><span class="dot dot-none"></span> Not participating</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input id="search-address" type="text" placeholder="Search address or place" aria-label="Search address" />
+      <button id="btn-find" class="btn-primary" type="button">Find on map</button>
+      <button id="btn-center" class="btn-ghost" type="button">Center map</button>
+      <div style="flex:1"></div>
+      <small class="sub" id="geocode-msg" style="margin-left:8px"></small>
+    </div>
+
+    <div class="map-body">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- load Leaflet first -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- pass Django URLs/config to external JS -->
+<script>
+  window.ROUTE_CONFIG = {
+    HOUSES_JSON_URL: "{% url 'houses_json' %}",
+    ADD_HOUSE_URL: "{% url 'add_house' %}",
+    DELETE_HOUSE_TEMPLATE: "{% url 'delete_house' 0 %}",
+    UPDATE_HOUSE_TEMPLATE: "{% url 'update_house' 0 %}"
+  };
+</script>
+
+
+<script src="{% static 'mapapp/js/map.js' %}"></script>
+{% endblock %}

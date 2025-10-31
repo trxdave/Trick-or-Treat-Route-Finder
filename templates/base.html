@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Trick-or-Treat Route Finder{% endblock %}</title>
+
+  <!-- global CSS -->
+  <link rel="stylesheet" href="{% static 'mapapp/css/team.css' %}">
+  <link rel="stylesheet" href="{% static 'mapapp/css/map.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <header>
+    <!-- optional navbar -->
+    <nav> <!-- simple placeholder navbar --> </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <small>&copy; Trick-or-Treat Route Finder</small>
+  </footer>
+
+  <!-- global scripts -->
+  <script src="{% static 'mapapp/js/team.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
