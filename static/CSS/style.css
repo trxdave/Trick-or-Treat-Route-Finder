@@ -103,3 +103,5 @@ footer > a{
 @media (max-width:480px){ .spooky-layer, #spooky-toggle {display:none} body {animation: none} }
 
 /* Re-size and space things out on larger screens */
+@media screen and (min-width:992px){ body {font-size:2rem;} h1 {font-size: 4rem !important;}.btn {font-size: 1.6rem; width:fit-content;} .column {margin-top:2.5rem !important;} }
+    
