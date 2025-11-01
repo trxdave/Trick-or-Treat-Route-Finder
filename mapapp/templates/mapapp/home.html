@@ -1,25 +1,49 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Home | Trick or Treat{% endblock %}
 
-{% block content %}
-  <section id="home-main">
-    <h1 class="text-center display-5">Trick or Treat Route Finder!</h1>
-    <div class="container">
-     <div class="row text-center row-gap-4">
-        <div class="column col-12 mt-2">
-          <p class="text-center">Find the best Trick-or-Treat spots near you</p>
-          <a href="/" class="btn btn-warning">🍬 Trick or Treater</a>
-        </div>
-        <div class="column col-12 mt-2">
-          <p class="text-center">Or let Trick-or-Treaters know your candy status</p>
-          <a href="/" class="btn btn-warning">🏠 Update my Status</a>
-        </div>
-      </div>
-    </div>
-  </section>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'CSS/map.css' %}">
+{% endblock %}
 
-  <section id="map" class="my-4">
-    {% include "mapapp/map.html" %}
-  </section>
+{% block content %}
+<section id="home-main" class="text-center py-5">
+  <div class="container">
+    <h1 class="display-5 fw-bold text-warning spooky-title mb-3">
+      Trick or Treat Route Finder!
+    </h1>
+
+    <p class="lead text-light mb-4">
+      Find the best Trick-or-Treat spots near you
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 flex-wrap mb-5">
+      <!-- Button 1 -->
+      <a href="{% url 'home' %}" class="btn btn-outline-warning btn-lg px-4 py-2 fw-bold shadow-sm">
+        🍬 Trick or Treater
+      </a>
+
+      <!-- Button 2 -->
+      <a href="{% url 'home' %}" class="btn btn-warning btn-lg px-4 py-2 fw-bold shadow-sm">
+        🏠 Update my Status
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Map Card -->
+<section class="container map-card">
+  <div class="map-card-header">
+    <span class="map-title">🎃 Trick-or-Treat Map</span>
+  </div>
+  <div class="map-inner">
+    <div id="map"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="{% static 'js/map.js' %}"></script>
 {% endblock %}

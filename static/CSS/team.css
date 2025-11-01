@@ -130,6 +130,12 @@ footer > a{
 .spooky-layer{ z-index: 0; }
 .container, main.container{ position: relative; z-index: 1; }
 
+/* Keep spooky overlay visible but never blocking clicks */
+.spooky-layer { pointer-events: none; }
+
+/* Ensure the final paragraph can pin to the bottom of card content */
+.team-blurb { color: var(--muted); }
+
 /* Responsive */
 @media (max-width: 576px){
   .avatar{ width: 130px; height:130px; }
