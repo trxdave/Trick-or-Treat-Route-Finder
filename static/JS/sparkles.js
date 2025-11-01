@@ -42,7 +42,7 @@
 
   window.addEventListener('pointermove', (e) => {
     const now = performance.now();
-    if (now - lastT < 16) return; // throttle ~60fps
+    if (now - lastT < 16) return;
     lastT = now;
     spawn(e.clientX, e.clientY);
   });
