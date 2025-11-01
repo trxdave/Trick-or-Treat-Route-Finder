@@ -6,7 +6,7 @@
   background: #121216 !important;
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
-.navbar .nav-link{ color:#e9edf4 !important; }
+.navbar .nav-link{ color:#e9edf4 !important; font-size: 1rem !important;}
 .navbar .nav-link:hover{ color: var(--orange) !important; }
 .navbar-brand{ color:#ffffff !important; font-weight:800; }
 #logo{ height:30px; width: 30px; }
@@ -34,6 +34,7 @@ body{
   background: url(../image/home-bg.webp) no-repeat 55% top / cover;
   font-family: var(--body-font);  
   font-size: 1.2rem;
+  margin-top: 57px;
 }
 
 main {
@@ -86,7 +87,7 @@ footer > a{
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(255,154,31,.25);
   position: absolute;
-  top: 10px;
+  top: 20px;
   left: 10px;
 }
 #spooky-toggle:hover{

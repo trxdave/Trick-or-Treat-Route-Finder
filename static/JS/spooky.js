@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleBtn.addEventListener('click', () => {
       const isHidden = spookyLayer.style.display === 'none';
       spookyLayer.style.display = isHidden ? 'block' : 'none';
-      toggleBtn.innerText = isHidden ? 'Spooky 🎃' : 'Calm 😌';
+      toggleBtn.innerText = isHidden ? 'Calm 😌' : 'Spooky 🎃';
     });
   }
 });
