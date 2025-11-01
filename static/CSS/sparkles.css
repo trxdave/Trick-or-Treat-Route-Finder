@@ -1,0 +1,40 @@
+/* Cursor sparkles */
+#sparkles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  contain: layout style paint;
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  transform: translate3d(0,0,0) scale(1);
+  opacity: 1;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+}
+
+/* circle “candy” */
+.sparkle.candy {
+  background: radial-gradient(circle at 30% 30%, #fff 0 35%, transparent 36%);
+  border-radius: 50%;
+  border: 2px solid currentColor;
+}
+
+/* tiny star */
+.sparkle.star::before,
+.sparkle.star::after {
+  content:"";
+  position:absolute; inset:0;
+  background: currentColor;
+  clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  border-radius:2px;
+}
+
+/* fade + drift */
+@keyframes s-fade {
+  to { opacity: 0; transform: translate3d(var(--dx), var(--dy), 0) scale(.25) rotate(25deg); }
+}
