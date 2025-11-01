@@ -6,11 +6,11 @@
   background: #121216 !important;
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
-.navbar .nav-link{ color:#e9edf4 !important; }
+.navbar .nav-link{ color:#e9edf4 !important; font-size: 1rem !important;}
 .navbar .nav-link:hover{ color: var(--orange) !important; }
 .navbar-brand{ color:#ffffff !important; font-weight:800; }
 #logo{ height:30px; width: 30px; }
-.navbar-toggler{ border: none; }
+.navbar-toggler{ border: none; } 
 
 /* ===== Halloween Theme (Black / White / Pumpkin) ===== */
 :root{
@@ -35,6 +35,7 @@ body{
     linear-gradient(180deg, var(--bg), var(--bg-2));
   font-family: var(--body-font);  
   font-size: 1.2rem;
+  margin-top: 57px;
 }
 
 /* Page title + subtitle */
@@ -134,3 +135,6 @@ footer > a{
 @media (max-width: 576px){
   .avatar{ width: 130px; height:130px; }
 }
+
+/* Re-size and space things out on larger screens */
+@media screen and (min-width:992px){ body {font-size:2rem;} h1 {font-size: 4rem !important;}.btn {font-size: 1.6rem; width:fit-content;} }
