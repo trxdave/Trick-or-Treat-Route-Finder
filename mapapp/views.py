@@ -3,6 +3,9 @@ from django.http import JsonResponse
 from .models import House
 import json
 
+def team(request):
+    return render(request, "mapapp/team.html")
+
 def home(request):
     """Render the home page."""
     return render(request, 'mapapp/home.html')
