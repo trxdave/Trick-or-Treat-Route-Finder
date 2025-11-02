@@ -124,16 +124,15 @@ Meet the caffeinated coders behind Trick or Treat:
 
 | **Tested** | **Performance Score** | **View Result** | **Pass** |
 --- | --- | --- | :---: |
+|homepage| 100 / 100 | <details><summary>Screenshot of result</summary>![Result](documentation/images/lighthouse-home.jpg)</details> | :white_check_mark:|
+|Team| 98 / 100 | <details><summary>Screenshot of result</summary>![Result](documentation/images/lighthouse-team.png)</details> | :white_check_mark:|
 
 ### Mobile Performance
 
 | **Tested** | **Performance Score** | **View Result** | **Pass** |
 --- | --- | --- | :---: |
-
-
-### Tested
-| **Tested** | **Performance Score** | **View Result** | **Pass** |
---- | --- | --- | :---: |
+|homepage| 90 / 100 | <details><summary>Screenshot of result</summary>![Result](documentation/images/lighthouse-mobile-home.jpg)</details> | :white_check_mark:|
+|Team| 90 / 100 | <details><summary>Screenshot of result</summary>![Result](documentation/images/lighthouse-mobile-team.jpg)</details> | :white_check_mark:|
 
 ## Technologies Used
 
