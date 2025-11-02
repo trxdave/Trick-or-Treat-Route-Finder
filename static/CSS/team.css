@@ -35,7 +35,6 @@ body{
     linear-gradient(180deg, var(--bg), var(--bg-2));
   font-family: var(--body-font);  
   font-size: 1.2rem;
-  margin-top: 57px;
 }
 
 /* Page title + subtitle */
