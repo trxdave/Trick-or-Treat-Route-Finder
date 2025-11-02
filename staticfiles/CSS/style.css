@@ -33,7 +33,6 @@ body{
   color: var(--text);
   font-family: var(--body-font);  
   font-size: 1.2rem;
-  margin-top: 57px;
 }
 
 main {
@@ -89,9 +88,6 @@ footer > a{
   padding: .45rem .8rem;
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(255,154,31,.25);
-  position: absolute;
-  top: 20px;
-  left: 10px;
 }
 #spooky-toggle:hover{
   filter: brightness(1.08);
