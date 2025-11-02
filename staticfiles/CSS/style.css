@@ -98,7 +98,6 @@ footer > a{
   box-shadow: 0 10px 22px rgba(255,154,31,.32);
 }
 
-
 /* Make sure spooky overlay doesn't sit on top of heading/button */
 .spooky-layer{ z-index: 0; }
 .container, main.container{ position: relative; z-index: 1; }

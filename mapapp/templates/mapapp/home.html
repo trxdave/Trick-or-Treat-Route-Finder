@@ -14,15 +14,11 @@
       Find the best Trick-or-Treat spots near you
     </p>
 
-    <div class="d-flex justify-content-center gap-3 flex-wrap mb-5">
-      <!-- For now: scroll to the map; replace hrefs with real URLs later -->
-      <a href="#map-section" class="btn btn-outline-warning btn-lg px-4 py-2 fw-bold shadow-sm">
-        🍬 Trick or Treater
-      </a>
-
-      <a href="#map-section" class="btn btn-warning btn-lg px-4 py-2 fw-bold shadow-sm">
-        🏠 Update my Status
-      </a>
+    <!-- NEW: Calm/Spooky toggle in the hero -->
+    <div class="d-flex justify-content-center mt-3 mb-5">
+      <button id="spooky-toggle" class="btn btn-warning btn-lg px-4 py-2 fw-bold shadow-sm">
+        Spooky 🎃
+      </button>
     </div>
   </div>
 </section>
@@ -44,14 +40,4 @@
 
   <!-- Your map logic (expects #map to exist and Leaflet loaded) -->
   <script src="{% static 'JS/map.js' %}"></script>
-
-  <!-- Optional: nice smooth scroll for the anchor links -->
-  <script>
-    document.addEventListener('click', (e) => {
-      const a = e.target.closest('a[href^="#"]');
-      if (!a) return;
-      const el = document.querySelector(a.getAttribute('href'));
-      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  </script>
 {% endblock %}
