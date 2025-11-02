@@ -24,7 +24,11 @@ DEBUG = False
 
 TEMPLATES_DIR = BASE_DIR / "templates"
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    # Include documentation assets (images) so they are collected and served in production
+    BASE_DIR / "documentation",
+]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
