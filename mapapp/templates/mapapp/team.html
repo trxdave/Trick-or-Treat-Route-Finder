@@ -7,92 +7,92 @@
 <link rel="stylesheet" href="{% static 'css/team.css' %}">
 {# Do NOT include spooky.css here; it’s already in base.html #}
 {% endblock %}
+<link rel="stylesheet" href="{% static 'CSS/team.css' %}">
 
-{% block content %}
+<section id="team-main" class="py-4">
+  <h1 class="text-center text-warning mb-3 display-5">🎃 Meet Team 10</h1>
+<section id="team-main" class="py-4">
+  <h1 class="text-center text-warning mb-3 display-5">🎃 Meet Team 10</h1>
+  <p class="text-center mb-5 page-sub">
+    Building the Trick-or-Treat Route Finder together for Hackathon 2025!
+  </p>
 
-<h1 class="text-center text-warning mb-3">🎃 Meet Team 10</h1>
-<p class="text-center mb-5 page-sub">
-  Building the Trick-or-Treat Route Finder together for Hackathon 2025!
-</p>
+  <div class="container-lg section-pad">
+    <!-- Auto 1 / 2 / 3 columns by breakpoint; 3 on lg for balanced layout -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 justify-content-center">
 
-{# REMOVE: page-local spooky toggle & overlay — base.html provides both #}
-{# <button id="spooky-toggle">...</button> #}
-{# <div class="spooky-layer">...</div> #}
-
-<div class="container-lg section-pad">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
-
-    <!-- David -->
-    <div class="col">
-      <div class="card team-card h-100 border-0">
-        <div class="card-body d-flex flex-column align-items-center text-center p-4">
-          <img src="{% static 'image/david.jpeg' %}" class="avatar mb-3" alt="David Cotter">
-          <h5 class="card-title">David Cotter</h5>
-          <p class="card-text text-info">Full-Stack Developer</p>
-          <p class="team-blurb mt-auto">
-            Leads the project setup, Django backend, and GitHub coordination.
-          </p>
+      <!-- David -->
+      <div class="col">
+        <div class="card team-card h-100 border-0">
+          <div class="card-body d-flex flex-column align-items-center text-center p-4">
+            <img src="{% static 'image/david.jpeg' %}" class="avatar mb-3" alt="David Cotter">
+            <h5 class="card-title">David Cotter</h5>
+            <p class="card-text text-info">Full-Stack Developer</p>
+            <p class="team-blurb mt-auto">
+              Leads the project setup, Django backend, and GitHub coordination.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Rachel -->
-    <div class="col">
-      <div class="card team-card h-100 border-0">
-        <div class="card-body d-flex flex-column align-items-center text-center p-4">
-          <img src="{% static 'image/rachel.jpg' %}" class="avatar mb-3" alt="Rachel">
-          <h5 class="card-title">Rachel</h5>
-          <p class="card-text text-info">Frontend Developer</p>
-          <p class="team-blurb mt-auto">
-            Works on UI design and frontend integration with the map feature.
-          </p>
+      <!-- Rachel -->
+      <div class="col">
+        <div class="card team-card h-100 border-0">
+          <div class="card-body d-flex flex-column align-items-center text-center p-4">
+            <img src="{% static 'image/rachel.jpg' %}" class="avatar mb-3" alt="Rachel">
+            <h5 class="card-title">Rachel</h5>
+            <p class="card-text text-info">Frontend Developer</p>
+            <p class="team-blurb mt-auto">
+              Works on UI design and frontend integration with the map feature.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Swathi -->
-    <div class="col">
-      <div class="card team-card h-100 border-0">
-        <div class="card-body d-flex flex-column align-items-center text-center p-4">
-          <img src="{% static 'image/swathi.jpg' %}" class="avatar mb-3" alt="Swathi">
-          <h5 class="card-title">Swathi</h5>
-          <p class="card-text text-info">Data &amp; AI</p>
-          <p class="team-blurb mt-auto">
-            Brings analytical skills to enhance map logic and feature ideas.
-          </p>
+      <!-- Swathi -->
+      <div class="col">
+        <div class="card team-card h-100 border-0">
+          <div class="card-body d-flex flex-column align-items-center text-center p-4">
+            <img src="{% static 'image/swathi.jpg' %}" class="avatar mb-3" alt="Swathi">
+            <h5 class="card-title">Swathi</h5>
+            <p class="card-text text-info">Data &amp; AI</p>
+            <p class="team-blurb mt-auto">
+              Brings analytical skills to enhance map logic and feature ideas.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Daniel -->
-    <div class="col">
-      <div class="card team-card h-100 border-0">
-        <div class="card-body d-flex flex-column align-items-center text-center p-4">
-          <img src="{% static 'image/daniel.jpg' %}" class="avatar mb-3" alt="Daniel">
-          <h5 class="card-title">Daniel</h5>
-          <p class="card-text text-info">Backend Developer</p>
-          <p class="team-blurb mt-auto">
-            Handles data flow, Django logic, and map integration setup.
-          </p>
+      <!-- Daniel -->
+      <div class="col">
+        <div class="card team-card h-100 border-0">
+          <div class="card-body d-flex flex-column align-items-center text-center p-4">
+            <img src="{% static 'image/daniel.jpg' %}" class="avatar mb-3" alt="Daniel">
+            <h5 class="card-title">Daniel</h5>
+            <p class="card-text text-info">Backend Developer</p>
+            <p class="team-blurb mt-auto">
+              Handles data flow, Django logic, and map integration setup.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Geraldine -->
-    <div class="col">
-      <div class="card team-card h-100 border-0">
-        <div class="card-body d-flex flex-column align-items-center text-center p-4">
-          <img src="{% static 'image/geraldine.jpeg' %}" class="avatar mb-3" alt="Geraldine">
-          <h5 class="card-title">Geraldine</h5>
-          <p class="card-text text-info">HTML &amp; CSS / Wireframes</p>
-          <p class="team-blurb mt-auto">
-            Designs layouts and styles for pages, ensuring a user-friendly look.
-          </p>
+      <!-- Geraldine -->
+      <div class="col">
+        <div class="card team-card h-100 border-0">
+          <div class="card-body d-flex flex-column align-items-center text-center p-4">
+            <img src="{% static 'image/geraldine.jpeg' %}" class="avatar mb-3" alt="Geraldine">
+            <h5 class="card-title">Geraldine</h5>
+            <p class="card-text text-info">HTML &amp; CSS / Wireframes</p>
+            <p class="team-blurb mt-auto">
+              Designs layouts and styles for pages, ensuring a user-friendly look.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
-</div>
+</section>
 
 {% endblock %}
