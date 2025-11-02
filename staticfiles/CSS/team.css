@@ -133,7 +133,7 @@ footer > a{
 .section-pad{ padding-top: .5rem; }
 
 /* Make sure spooky overlay doesn't sit on top of heading/button */
-.spooky-layer{ z-index: 0; }
+.spooky-layer{ z-index: 500; }
 .container, main.container{ position: relative; z-index: 1; }
 
 /* Keep spooky overlay visible but never blocking clicks */
