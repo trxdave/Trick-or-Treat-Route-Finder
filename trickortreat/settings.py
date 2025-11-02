@@ -35,7 +35,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'trick-or-treat-route-finder-2a1f86fbfb2e.herokuapp.com']
 
 
 # Application definition
