@@ -51,6 +51,11 @@ p.page-sub{
   color: var(--muted);
 }
 
+/* Background Image */
+#team-main {
+  background: url(../image/team-bg.webp) no-repeat center center / cover;
+}
+
 /* Cards */
 .team-card{
   background: var(--card) !important;
