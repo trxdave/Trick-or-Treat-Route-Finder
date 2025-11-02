@@ -20,7 +20,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
+DEBUG = False
 
 TEMPLATES_DIR = BASE_DIR / "templates"
 STATIC_URL = "static/"
