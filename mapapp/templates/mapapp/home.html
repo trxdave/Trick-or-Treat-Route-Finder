@@ -5,6 +5,8 @@
 
 {% block content %}
 <section id="home-main" class="d-flex text-center py-5 justify-content-center">
+  <!-- Background layer moved to markup so it stays behind the spooky overlay -->
+  <div class="home-bg" style="background-image:url('{% static "image/home-bg.webp" %}');"></div>
   <div class="container">
     <h1 class="display-5 fw-bold text-warning spooky-title mb-3">
       Trick or Treat Route Finder!
