@@ -15,7 +15,7 @@ body{
 @keyframes drift{ 0%,100%{background-position:0 0,0 0,0 0} 50%{background-position:40px 30px,-60px 20px,0 100%} }
 
 /* overlay */
-.spooky-layer{ pointer-events:none; position:fixed; inset:0; z-index:0; }
+.spooky-layer{ pointer-events:none; position:fixed; inset:0; z-index:500; }
 .spooky-layer .sprite{ position:absolute; }
 
 /* content above */
