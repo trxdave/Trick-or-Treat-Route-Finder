@@ -23,7 +23,13 @@ main.container,.container{ position:relative; z-index:2; }
 
 /* ghost */
 .ghost{ left:6%; top:22%; width:90px; height:110px; animation:float 6s ease-in-out infinite; filter:drop-shadow(0 8px 16px rgba(0,0,0,.25)); }
-@keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes float{
+  0%{ transform:translate(0,0) }
+  25%{ transform:translate(6px,-8px) }
+  50%{ transform:translate(0,-14px) }
+  75%{ transform:translate(-6px,-8px) }
+  100%{ transform:translate(0,0) }
+}
 .ghost .body{ width:90px;height:90px;background:#f5f6fa;border-radius:45px 45px 20px 20px;position:relative }
 .ghost .body:after{
   content:"";position:absolute;left:0;right:0;bottom:-18px;height:22px;
@@ -33,14 +39,16 @@ main.container,.container{ position:relative; z-index:2; }
     radial-gradient(circle at 60px 10px,#f5f6fa 11px,transparent 12px),
     radial-gradient(circle at 85px 10px,#f5f6fa 11px,transparent 12px)
 }
-.ghost .eye{ position:absolute; top:30px; width:14px; height:18px; background:#1b2430; border-radius:8px; }
+.ghost .eye{ position:absolute; top:30px; width:14px; height:18px; background:#1b2430; border-radius:8px; animation:blink 5s infinite; }
 .ghost .eye.left{ left:28px } .ghost .eye.right{ right:28px }
+.ghost .eye.right{ animation-delay: .8s; }
+@keyframes blink{ 0%,8%,100%{ transform:scaleY(1) } 4%{ transform:scaleY(.1) } }
 .ghost .mouth{
   position:absolute; top:55px; left:50%; width:18px; height:12px; transform:translateX(-50%);
   border:3px solid #1b2430; border-top:none; border-radius:0 0 20px 20px;
 }
 
-/* bats (x5) */
+/* bats (x5) with subtle vertical glide */
 .bat{ width:70px; height:28px; fill:#202938; }
 .bat svg{ animation:flap .35s ease-in-out infinite alternate; transform-origin:center; }
 @keyframes flap{ from{transform:scaleY(1)} to{transform:scaleY(.85)} }
@@ -51,8 +59,20 @@ main.container,.container{ position:relative; z-index:2; }
 .bat4{ top:4%;  left:-15%; animation:batfly4 26s linear infinite; transform:scale(.85); }
 .bat5{ top:20%; left:112%; animation:batfly5 24s linear infinite; transform:scale(1.05); }
 
-@keyframes batfly1{ to{ transform:translateX(130vw); } }
-@keyframes batfly2{ to{ transform:translateX(-130vw); } }
+@keyframes batfly1{
+  0%{ transform:translateX(0) }
+  25%{ transform:translateX(32vw) translateY(-6px) }
+  50%{ transform:translateX(65vw) }
+  75%{ transform:translateX(98vw) translateY(6px) }
+  100%{ transform:translateX(130vw) }
+}
+@keyframes batfly2{
+  0%{ transform:translateX(0) }
+  25%{ transform:translateX(-32vw) translateY(6px) }
+  50%{ transform:translateX(-65vw) }
+  75%{ transform:translateX(-98vw) translateY(-6px) }
+  100%{ transform:translateX(-130vw) }
+}
 @keyframes batfly3{ to{ transform:translateX(130vw) translateY(-10px); } }
 @keyframes batfly4{ 50%{ transform:translateX(65vw) translateY(12px) } to{ transform:translateX(130vw) } }
 @keyframes batfly5{ 40%{ transform:translateX(-50vw) translateY(-8px) } to{ transform:translateX(-130vw) } }
@@ -63,10 +83,12 @@ main.container,.container{ position:relative; z-index:2; }
   position:absolute; top:0; left:50%; width:2px; height:140px;
   background:repeating-linear-gradient(#e8e8e8,#e8e8e8 6px,transparent 6px,transparent 10px);
   transform:translateX(-50%);
+  animation:thread 2.4s linear infinite;
 }
 .spider .bug{
   position:absolute; top:52px; left:50%; transform:translateX(-50%);
   width:34px; height:34px; border-radius:50%; background:#1b2430; box-shadow:0 10px 16px rgba(0,0,0,.35);
+  animation:sway 3.8s ease-in-out infinite;
 }
 .spider .bug:before,.spider .bug:after{
   content:""; position:absolute; width:46px; height:18px;
@@ -75,6 +97,8 @@ main.container,.container{ position:relative; z-index:2; }
 .spider .bug:before{ left:-40px; transform:rotate(10deg); }
 .spider .bug:after { right:-40px; transform:rotate(-10deg); }
 @keyframes descend{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(120px) } }
+@keyframes sway{ 0%,100%{ transform:translateX(-50%) rotate(0deg) } 50%{ transform:translateX(-50%) rotate(3deg) } }
+@keyframes thread{ 0%{ background-position:0 0 } 100%{ background-position:0 20px } }
 
 /* crawler spider */
 .crawler-spider{

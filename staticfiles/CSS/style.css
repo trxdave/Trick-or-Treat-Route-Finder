@@ -98,8 +98,8 @@ footer > a{
 
 
 /* Layering: ghosts above background, below content */
-.spooky-layer{ z-index: 1; }
-.container, main.container{ position: relative; z-index: 2; }
+.spooky-layer{ z-index: 500; }
+.container, main.container{ position: relative; z-index: 1000; }
 
 /* optional: hide spooky effects on very small screens */
 @media (max-width:480px){ .spooky-layer, #spooky-toggle {display:none} body {animation: none} }
