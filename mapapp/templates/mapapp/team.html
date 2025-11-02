@@ -4,13 +4,11 @@
 {% block title %}Our Team{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/team.css' %}">
-{# Do NOT include spooky.css here; it’s already in base.html #}
-{% endblock %}
+{# Use the path that matches your static folder. If your folder is static/CSS/, keep CSS below. #}
 <link rel="stylesheet" href="{% static 'CSS/team.css' %}">
+{% endblock %}
 
-<section id="team-main" class="py-4">
-  <h1 class="text-center text-warning mb-3 display-5">🎃 Meet Team 10</h1>
+{% block content %}
 <section id="team-main" class="py-4">
   <h1 class="text-center text-warning mb-3 display-5">🎃 Meet Team 10</h1>
   <p class="text-center mb-5 page-sub">
@@ -18,7 +16,7 @@
   </p>
 
   <div class="container-lg section-pad">
-    <!-- Auto 1 / 2 / 3 columns by breakpoint; 3 on lg for balanced layout -->
+    <!-- 1 / 2 / 3 columns by breakpoint; 3 on lg for balanced layout -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 justify-content-center">
 
       <!-- David -->
@@ -94,5 +92,4 @@
     </div>
   </div>
 </section>
-
 {% endblock %}
