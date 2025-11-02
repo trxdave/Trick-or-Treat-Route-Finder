@@ -13,8 +13,8 @@ body{
   background-attachment: fixed;
 }
 @keyframes drift{
-  0%,100%{background-position:0 0,0 0,0 0}
-  50%{background-position:40px 30px,-60px 20px,0 100%}
+  0%,100%{background-position:-50px 0,0 0,0 0}
+  50%{background-position:-10px 30px,-60px 20px,0 100%}
 }
 
 /* overlay container */
@@ -38,7 +38,7 @@ body{
   border:3px solid #1b2430;border-top:none;border-radius:0 0 20px 20px}
 
 /* bats */
-.bat{width:70px;height:28px;fill:#202938}
+.bat{width:70px;height:28px;fill:#3E3E49}
 .bat1{top:14%;left:-8%;animation:batfly1 18s linear infinite}
 .bat2{top:8%;left:110%;animation:batfly2 22s linear infinite;transform:scale(.9)}
 .bat3{top:26%;left:-12%;animation:batfly3 20s linear infinite;transform:scale(1.15)}
@@ -50,16 +50,16 @@ body{
 
 /* spider */
 .spider{right:2.5%;top:-120px;width:80px;height:140px;animation:descend 7s ease-in-out infinite}
-.spider .thread{position:absolute;top:0;left:50%;width:2px;height:140px;
+.spider .thread{position:absolute;top:0;left:50%;width:2px;height:140px; 
   background:repeating-linear-gradient(#e8e8e8,#e8e8e8 6px,transparent 6px,transparent 10px);
   transform:translateX(-50%)}
 .spider .bug{position:absolute;top:52px;left:50%;transform:translateX(-50%);
-  width:34px;height:34px;border-radius:50%;background:#1b2430;box-shadow:0 10px 16px rgba(0,0,0,.35)}
+  width:34px;height:34px;border-radius:50%;background:#6E6E7D;box-shadow:0 10px 16px rgba(0,0,0,.35)}
 .spider .bug:before,.spider .bug:after{content:"";position:absolute;width:46px;height:18px;
-  border:3px solid #1b2430;border-top:none;border-radius:0 0 18px 18px;top:-6px}
+  border:3px solid #6E6E7D;border-top:none;border-radius:0 0 18px 18px;top:-6px}
 .spider .bug:before{left:-40px;transform:rotate(10deg)}
 .spider .bug:after{right:-40px;transform:rotate(-10deg)}
-@keyframes descend{0%,100%{transform:translateY(0)} 50%{transform:translateY(120px)}}
+@keyframes descend{0%,100%{transform:translateY(57px)} 50%{transform:translateY(177px)}}
 
 /* keep your content above the layer */
 main.container,.container{position:relative;z-index:1}
