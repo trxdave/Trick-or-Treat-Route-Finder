@@ -173,9 +173,9 @@ To deploy Trick-or-Treat Route Finder on Heroku, follow these steps:
 ## Prepare Your Project
 Ensure your project has the following files in the root directory:
 
-requirements.txt - pip freeze > requirements.txt
-Procfile - web: gunicorn trickortreat.wsgi
-runtime.txt - python-3.12.4
+- requirements.txt - pip freeze > requirements.txt
+- Procfile - web: gunicorn trickortreat.wsgi
+- runtime.txt - python-3.12.4
 
 ## Add and Commit the Files
 
@@ -190,15 +190,15 @@ In your Heroku dashboard:
 
 ## Collect Static Files
 
-Heroku run - python manage.py collectstatic
+- Heroku run - python manage.py collectstatic
 
 ## Migrate the Database
 
-Heroku run - python manage.py migrate
+- Heroku run - python manage.py migrate
 
 ## Launch the App
 
-Visit - 
+Visit - https://trick-or-treat-route-finder-2a1f86fbfb2e.herokuapp.com/ 
 
 ## Acknowledgements
 Special thanks to Code Institute for organizing the Hack or Treat 2025 hackathon 🎃
