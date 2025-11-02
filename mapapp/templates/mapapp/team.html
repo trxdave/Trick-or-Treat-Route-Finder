@@ -5,7 +5,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/team.css' %}">
-<link rel="stylesheet" href="{% static 'css/spooky.css' %}">
+{# Do NOT include spooky.css here; it’s already in base.html #}
 {% endblock %}
 
 {% block content %}
@@ -15,23 +15,11 @@
   Building the Trick-or-Treat Route Finder together for Hackathon 2025!
 </p>
 
-<div class="text-center mb-4">
-  <button id="spooky-toggle" class="btn btn-sm btn-warning" type="button">Spooky 🎃</button>
-</div>
-
-{# Spooky overlay (kept, but non-blocking via CSS) #}
-<div class="spooky-layer">
-  <div class="sprite ghost">
-    <div class="body"><span class="eye left"></span><span class="eye right"></span><span class="mouth"></span></div>
-  </div>
-  <div class="sprite bat bat1"><svg viewBox="0 0 120 48" aria-hidden="true"><path d="M0 28c14-20 36-16 60-8 24-8 46-12 60 8-12-4-24-2-36 6-6-4-16-4-24 0-12-8-24-10-36-6z"/></svg></div>
-  <div class="sprite bat bat2"><svg viewBox="0 0 120 48" aria-hidden="true"><path d="M0 28c14-20 36-16 60-8 24-8 46-12 60 8-12-4-24-2-36 6-6-4-16-4-24 0-12-8-24-10-36-6z"/></svg></div>
-  <div class="sprite bat bat3"><svg viewBox="0 0 120 48" aria-hidden="true"><path d="M0 28c14-20 36-16 60-8 24-8 46-12 60 8-12-4-24-2-36 6-6-4-16-4-24 0-12-8-24-10-36-6z"/></svg></div>
-  <div class="sprite spider"><div class="thread"></div><div class="bug"></div></div>
-</div>
+{# REMOVE: page-local spooky toggle & overlay — base.html provides both #}
+{# <button id="spooky-toggle">...</button> #}
+{# <div class="spooky-layer">...</div> #}
 
 <div class="container-lg section-pad">
-  <!-- Auto 1 / 2 / 4 columns by breakpoint -->
   <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
 
     <!-- David -->

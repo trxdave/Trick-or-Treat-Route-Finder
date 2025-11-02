@@ -3,10 +3,6 @@
 
 {% block title %}Home | Trick or Treat{% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'CSS/map.css' %}">
-{% endblock %}
-
 {% block content %}
 <section id="home-main" class="text-center py-5">
   <div class="container">
@@ -19,13 +15,12 @@
     </p>
 
     <div class="d-flex justify-content-center gap-3 flex-wrap mb-5">
-      <!-- Button 1 -->
-      <a href="{% url 'home' %}" class="btn btn-outline-warning btn-lg px-4 py-2 fw-bold shadow-sm">
+      <!-- For now: scroll to the map; replace hrefs with real URLs later -->
+      <a href="#map-section" class="btn btn-outline-warning btn-lg px-4 py-2 fw-bold shadow-sm">
         🍬 Trick or Treater
       </a>
 
-      <!-- Button 2 -->
-      <a href="{% url 'home' %}" class="btn btn-warning btn-lg px-4 py-2 fw-bold shadow-sm">
+      <a href="#map-section" class="btn btn-warning btn-lg px-4 py-2 fw-bold shadow-sm">
         🏠 Update my Status
       </a>
     </div>
@@ -33,7 +28,7 @@
 </section>
 
 <!-- Map Card -->
-<section class="container map-card">
+<section id="map-section" class="container map-card">
   <div class="map-card-header">
     <span class="map-title">🎃 Trick-or-Treat Map</span>
   </div>
@@ -44,6 +39,19 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="{% static 'js/map.js' %}"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Your map logic (expects #map to exist and Leaflet loaded) -->
+  <script src="{% static 'js/map.js' %}"></script>
+
+  <!-- Optional: nice smooth scroll for the anchor links -->
+  <script>
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  </script>
 {% endblock %}

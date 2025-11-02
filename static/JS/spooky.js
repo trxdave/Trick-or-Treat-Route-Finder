@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const layer = document.querySelector('.spooky-layer');
   if (!btn || !layer) return;
 
-  // Restore last choice (default = calm ON for accessibility)
-  const saved = localStorage.getItem('spooky') || 'calm';
+  // default to Spooky ON so you see it immediately
+  const saved = localStorage.getItem('spookyMode') || 'spooky';
   setMode(saved);
 
   btn.addEventListener('click', () => {
@@ -16,16 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
   function setMode(mode) {
     if (mode === 'spooky') {
       document.body.classList.remove('calm');
-      layer.hidden = false;
+      layer.removeAttribute('hidden');
+      layer.style.opacity = '1';
+      layer.style.pointerEvents = 'none';
       btn.textContent = 'Calm 💤';
       btn.setAttribute('aria-pressed', 'true');
     } else {
       document.body.classList.add('calm');
-      // Hide layer completely in calm mode (no drift at all)
-      layer.hidden = true;
+      layer.style.opacity = '0';
+      layer.style.pointerEvents = 'none';
       btn.textContent = 'Spooky 🎃';
       btn.setAttribute('aria-pressed', 'false');
     }
-    localStorage.setItem('spooky', mode);
+    localStorage.setItem('spookyMode', mode);
   }
 });
