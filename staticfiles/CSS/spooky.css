@@ -1,0 +1,115 @@
+:root{
+  --bg-1:#0b0f14; --bg-2:#11161d; --pumpkin:#ffb22c; --mint:#63ccca;
+  --card:#2a3340e0; --card-border:#3b4657;
+}
+
+/* animated background */
+body{
+  background:
+    radial-gradient(1200px 1200px at 10% -10%, #1b2330 0%, transparent 50%),
+    radial-gradient(800px 800px at 110% 20%, #1a202b 0%, transparent 50%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  animation: drift 18s ease-in-out infinite alternate;
+  background-attachment: fixed;
+}
+@keyframes drift{ 0%,100%{background-position:0 0,0 0,0 0} 50%{background-position:40px 30px,-60px 20px,0 100%} }
+
+/* overlay */
+.spooky-layer{ pointer-events:none; position:fixed; inset:0; z-index:0; }
+.spooky-layer .sprite{ position:absolute; }
+
+/* content above */
+main.container,.container{ position:relative; z-index:1; }
+
+/* ghost */
+.ghost{ left:6%; top:22%; width:90px; height:110px; animation:float 6s ease-in-out infinite; filter:drop-shadow(0 8px 16px rgba(0,0,0,.25)); }
+@keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+.ghost .body{ width:90px;height:90px;background:#f5f6fa;border-radius:45px 45px 20px 20px;position:relative }
+.ghost .body:after{
+  content:"";position:absolute;left:0;right:0;bottom:-18px;height:22px;
+  background:
+    radial-gradient(circle at 10px 10px,#f5f6fa 11px,transparent 12px),
+    radial-gradient(circle at 35px 10px,#f5f6fa 11px,transparent 12px),
+    radial-gradient(circle at 60px 10px,#f5f6fa 11px,transparent 12px),
+    radial-gradient(circle at 85px 10px,#f5f6fa 11px,transparent 12px)
+}
+.ghost .eye{ position:absolute; top:30px; width:14px; height:18px; background:#1b2430; border-radius:8px; }
+.ghost .eye.left{ left:28px } .ghost .eye.right{ right:28px }
+.ghost .mouth{
+  position:absolute; top:55px; left:50%; width:18px; height:12px; transform:translateX(-50%);
+  border:3px solid #1b2430; border-top:none; border-radius:0 0 20px 20px;
+}
+
+/* bats (x5) */
+.bat{ width:70px; height:28px; fill:#202938; }
+.bat svg{ animation:flap .35s ease-in-out infinite alternate; transform-origin:center; }
+@keyframes flap{ from{transform:scaleY(1)} to{transform:scaleY(.85)} }
+
+.bat1{ top:14%; left:-10%; animation:batfly1 18s linear infinite; }
+.bat2{ top:8%;  left:110%; animation:batfly2 22s linear infinite; transform:scale(.9); }
+.bat3{ top:26%; left:-12%; animation:batfly3 20s linear infinite; transform:scale(1.15); }
+.bat4{ top:4%;  left:-15%; animation:batfly4 26s linear infinite; transform:scale(.85); }
+.bat5{ top:20%; left:112%; animation:batfly5 24s linear infinite; transform:scale(1.05); }
+
+@keyframes batfly1{ to{ transform:translateX(130vw); } }
+@keyframes batfly2{ to{ transform:translateX(-130vw); } }
+@keyframes batfly3{ to{ transform:translateX(130vw) translateY(-10px); } }
+@keyframes batfly4{ 50%{ transform:translateX(65vw) translateY(12px) } to{ transform:translateX(130vw) } }
+@keyframes batfly5{ 40%{ transform:translateX(-50vw) translateY(-8px) } to{ transform:translateX(-130vw) } }
+
+/* dangling spider */
+.spider{ right:2.5%; top:-120px; width:80px; height:140px; animation:descend 7s ease-in-out infinite; }
+.spider .thread{
+  position:absolute; top:0; left:50%; width:2px; height:140px;
+  background:repeating-linear-gradient(#e8e8e8,#e8e8e8 6px,transparent 6px,transparent 10px);
+  transform:translateX(-50%);
+}
+.spider .bug{
+  position:absolute; top:52px; left:50%; transform:translateX(-50%);
+  width:34px; height:34px; border-radius:50%; background:#1b2430; box-shadow:0 10px 16px rgba(0,0,0,.35);
+}
+.spider .bug:before,.spider .bug:after{
+  content:""; position:absolute; width:46px; height:18px;
+  border:3px solid #1b2430; border-top:none; border-radius:0 0 18px 18px; top:-6px;
+}
+.spider .bug:before{ left:-40px; transform:rotate(10deg); }
+.spider .bug:after { right:-40px; transform:rotate(-10deg); }
+@keyframes descend{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(120px) } }
+
+/* crawler spider */
+.crawler-spider{
+  position:fixed; bottom:10px; left:-60px; width:24px; height:24px; border-radius:50%;
+  background:#1b2430; box-shadow:0 6px 10px rgba(0,0,0,.35);
+  animation:crawl 28s linear infinite; pointer-events:none;
+}
+.crawler-spider:before,.crawler-spider:after{
+  content:""; position:absolute; width:28px; height:10px; top:-6px;
+  border:2px solid #1b2430; border-top:none; border-radius:0 0 10px 10px;
+}
+.crawler-spider:before{ left:-24px; transform:rotate(8deg); }
+.crawler-spider:after { right:-24px; transform:rotate(-8deg); }
+@keyframes crawl{
+  0%{ left:-60px; transform:translateY(0) }
+  20%{ transform:translateY(-4px) }
+  50%{ left:calc(100vw - 10px); transform:translateY(0) }
+  70%{ transform:translateY(-3px) }
+  100%{ left:-60px; transform:translateY(0) }
+}
+
+/* calm mode */
+body.calm .spooky-layer{ opacity:0; pointer-events:none; transition:opacity .25s ease; }
+body.calm .spooky-layer .sprite{ animation-play-state:paused !important; }
+
+/* don’t hide on small screens while testing */
+@media (prefers-reduced-motion: reduce){
+  body{ animation: none; }
+  .spooky-layer .sprite{ animation: none !important; }
+}
+
+/* floating toggle style */
+.spooky-btn{
+  position: fixed; top: 1rem; right: 1rem; z-index: 1100;
+  border-radius: 12px; padding: 0.4rem 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  font-weight: 600; transition: transform .3s ease, background-color .3s ease;
+}
+.spooky-btn:hover{ transform: scale(1.08); background-color: #ff9800; }

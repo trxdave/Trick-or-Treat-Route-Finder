@@ -1,0 +1,239 @@
+/* Map section */
+.map-card{
+  position: relative;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.04);
+  overflow: hidden; /* important so map tiles don't escape the rounded card */
+  margin-top: 1rem;
+}
+
+/* header inside the map card */
+.map-card-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .6rem .9rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+}
+.map-card-header .map-title{
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* map container - sized responsively */
+.map-inner { height: 60vh; min-height: 300px; }
+#map {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
+}
+
+/* ensure Leaflet's internal container inherits sizing / rounded corners */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit;
+}
+
+/* keep your floating controls above the map tiles */
+.map-controls{
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1200; /* higher than leaflet panes so custom controls remain clickable */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* simple search / tools layout */
+.address-tools{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: rgba(11,11,13,0.6);
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(4px);
+}
+
+.map-search input,
+.map-search .form-control{
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: .45rem .6rem;
+  border-radius: 8px;
+  min-width: 220px;
+  outline: none;
+}
+.map-search input::placeholder { color: rgba(255,255,255,0.5); }
+
+/* small action buttons next to search */
+.map-btn{
+  background: var(--orange);
+  color: #111;
+  border: none;
+  padding: .4rem .7rem;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(255,154,31,0.12);
+  cursor: pointer;
+}
+.map-btn:active { transform: translateY(1px); }
+
+/* legend block */
+.map-legend{
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 1100;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: rgba(11,11,13,0.6);
+  padding: .5rem .7rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--muted);
+  font-size: .9rem;
+}
+.map-legend .item{ display:flex; gap:8px; align-items:center; }
+.map-legend .chip{
+  width: 12px; height: 12px; border-radius: 3px; box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
+
+/* legend colors (match theme) */
+.legend-candy{ background: var(--orange); }
+.legend-low{ background: var(--orange-2); }
+.legend-empty{ background: rgba(255,255,255,0.12); }
+
+/* popups / info panel styling helper */
+.map-info{
+  background: rgba(30,34,42,0.95);
+  color: var(--text);
+  padding: .6rem .8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* responsive adjustments */
+@media (max-width: 768px){
+  #map { height: 50vh; min-height: 260px; }
+  .map-controls{ top: 8px; left: 8px; gap:6px; }
+  .map-search input{ min-width: 140px; }
+  .map-legend{ left: 8px; bottom: 8px; font-size:.85rem; padding:.4rem .5rem; }
+}
+
+@media (max-width: 420px){
+  .map-controls{ left: 50%; transform: translateX(-50%); top: 8px; }
+  .address-tools{ flex-direction: column; gap:6px; align-items: center; padding: 8px; }
+  .map-search input{ min-width: 100px; width: 100%; }
+}
+
+/* Leaflet popup / inline form styling */
+.leaflet-popup-content-wrapper {
+  background: rgba(20,22,26,0.98);
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 0.12rem; /* reduce default wrapper padding */
+}
+
+/* Color the popup arrow to match the wrapper */
+.leaflet-popup-tip-container .leaflet-popup-tip,
+.leaflet-popup-tip {
+  fill: rgba(20,22,26,0.98);
+}
+
+/* Main content inside popup */
+.leaflet-popup-content {
+  color: var(--text, #e9edf4);
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  box-sizing: border-box;
+  min-width: 180px;
+  max-width: 320px;
+}
+
+/* Form inside popup */
+.popup-form{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Inputs and select */
+.popup-form input,
+.popup-form select,
+.popup-form .form-control {
+  background: rgba(255,255,255,0.03);
+  color: var(--text, #e9edf4);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: .42rem .55rem;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: .92rem;
+}
+
+/* Placeholder tone */
+.popup-form input::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+/* Actions row */
+.popup-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+/* Buttons */
+.popup-form button,
+.popup-actions button {
+  padding: .36rem .6rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: .9rem;
+}
+
+/* Primary save button */
+#popup-save {
+  background: var(--orange, #ff9a1f);
+  color: #111;
+  box-shadow: 0 6px 18px rgba(255,154,31,0.12);
+}
+
+/* Secondary / cancel */
+#popup-cancel {
+  background: transparent;
+  color: var(--muted, rgba(255,255,255,0.7));
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Hover/active affordances */
+#popup-save:hover { transform: translateY(-1px); }
+#popup-save:active { transform: translateY(0); }
+#popup-cancel:hover { background: rgba(255,255,255,0.02); }
+
+/* Make popup content responsive */
+@media (max-width:420px){
+  .leaflet-popup-content { padding: .45rem; font-size: .9rem; min-width: 150px; }
+  .popup-form input, .popup-form select { padding: .34rem .46rem; }
+  .popup-form button { padding: .32rem .46rem; font-size: .85rem; }
+}
