@@ -15,11 +15,11 @@ body{
 @keyframes drift{ 0%,100%{background-position:0 0,0 0,0 0} 50%{background-position:40px 30px,-60px 20px,0 100%} }
 
 /* overlay */
-.spooky-layer{ pointer-events:none; position:fixed; inset:0; z-index:500; }
+.spooky-layer{ pointer-events:none; position:fixed; inset:0; z-index:1; }
 .spooky-layer .sprite{ position:absolute; }
 
 /* content above */
-main.container,.container{ position:relative; z-index:1; }
+main.container,.container{ position:relative; z-index:2; }
 
 /* ghost */
 .ghost{ left:6%; top:22%; width:90px; height:110px; animation:float 6s ease-in-out infinite; filter:drop-shadow(0 8px 16px rgba(0,0,0,.25)); }
